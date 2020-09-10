@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Free calc :D</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+	<div class="calc_container">
+		<div id="calculation_container">
+			<span id='calculation_area'>
+			</span>
+		</div>
+		<div class="keyboard_container">
+			<div class="keyEl" onclick="calcKey('AC')">AC</div>
+			<div class="keyEl" onclick="calcKey('PM')">+/-</div>
+			<div class="keyEl" onclick="calcKey('PC')">%</div>
+			<div class="keyEl" onclick="calcKey('SP')">/</div>
+			<div class="keyEl" onclick="calcKey('7')">7</div>
+			<div class="keyEl" onclick="calcKey('8')">8</div>
+			<div class="keyEl" onclick="calcKey('9')">9</div>
+			<div class="keyEl" onclick="calcKey('ML')">x</div>
+			<div class="keyEl" onclick="calcKey('4')">4</div>
+			<div class="keyEl" onclick="calcKey('5')">5</div>
+			<div class="keyEl" onclick="calcKey('6')">6</div>
+			<div class="keyEl" onclick="calcKey('PL')">+</div>
+			<div class="keyEl" onclick="calcKey('1')">1</div>
+			<div class="keyEl" onclick="calcKey('2')">2</div>
+			<div class="keyEl" onclick="calcKey('3')">3</div>
+			<div class="keyEl" onclick="calcKey('MN')">-</div>
+			<div class="keyEl" onclick="calcKey('0')">0</div>
+			<div class="keyEl" onclick="calcKey('DT')">,</div>
+			<div class="keyEl keyEq" onclick="calcKey(EQ)">=</div>
+		</div>
+	</div>
+	<script>
+		var calcKey = function(type){
+			let calc_value = document.getElementById('calculation_area');
+			switch(type){
+				case '0':
+					calc_value.innerHTML += '0';
+					break;
+				case '1':
+					calc_value.innerHTML += '1';
+					break;
+				case '2':
+					calc_value.innerHTML += '2';
+					break;
+				case '3':
+					calc_value.innerHTML += '3';
+					break;
+				case '4':
+					calc_value.innerHTML += '4';
+					break;
+				case '5':
+					calc_value.innerHTML += '5';
+					break;
+				case '6':
+					calc_value.innerHTML += '6';
+					break;
+				case '7':
+					calc_value.innerHTML += '7';
+					break;
+				case '8':
+					calc_value.innerHTML += '8';
+					break;
+				case '9':
+					calc_value.innerHTML += '9';
+					break;
+				case 'AC':
+					calc_value.innerHTML = '';
+					break;
+				case 'PM':
+					calc_value.innerHTML = '';
+					break;
+				case 'PC':
+					calc_value.innerHTML = '';
+					break;
+				case 'SP':
+					calc_value.innerHTML = '/';
+					break;
+				case 'ML':
+					calc_value.innerHTML = 'x';
+					break;
+				case 'PL':
+					calc_value.innerHTML += '+';
+					break;
+				case 'MN':
+					calc_value.innerHTML += '-';
+					break;
+				case 'EQ':
+					calc_value.innerHTML = calculate_ex(calc_value);
+					break;
+				case 'DT':
+					calc_value.innerHTML = '';
+					break;
+			}
+		}
+	</script>
+</body>
+</html>

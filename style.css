@@ -41,6 +41,21 @@ div{
 	box-shadow:0;
 	transition: all 0.1s ease;
 }
+.keyEl.inactive{
+	filter: grayscale(80%);
+	width:71px;
+	height: 56px;
+	border:2px solid #545C64;
+}
+.keyEl.inactive span{
+	filter: blur(3px);
+}
+.keyEl.inactive:hover{
+	box-shadow:none;
+}
+.keyEl.inactive:active{
+	box-shadow:none;
+}
 #calculation_container{
 	height: 80px;
 	text-align: right;

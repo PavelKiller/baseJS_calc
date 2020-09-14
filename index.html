@@ -15,8 +15,8 @@
 		</div>
 		<div class="keyboard_container">
 			<div class="keyEl" onclick="calcKey('AC')">AC</div>
-			<div class="keyEl" onclick="calcKey('PM')">+/-</div>
-			<div class="keyEl" onclick="calcKey('PC')">%</div>
+			<div class="keyEl inactive" onclick="calcKey('PM')">+/-</div>
+			<div class="keyEl inactive" onclick="calcKey('PC')">%</div>
 			<div class="keyEl" onclick="calcKey('SP')">/</div>
 			<div class="keyEl" onclick="calcKey('7')">7</div>
 			<div class="keyEl" onclick="calcKey('8')">8</div>
@@ -85,9 +85,9 @@
 					calc_value.innerHTML = '';
 					break;
 				case 'PC':
-					clear_class();
+					/*clear_class();
 					calc_keys[2].classList.toggle('prev_sign');
-					calc_value.innerHTML = '';
+					calc_value.innerHTML = '';*/
 					break;
 				case 'SP':
 					clear_class();

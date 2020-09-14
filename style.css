@@ -102,6 +102,7 @@ div{
 
 #prev_val_container{
 	height:50px;
+	margin-top:-50px;
 	box-shadow: 0 0 7px 1px #C8CBCE;
 	font-family: 'Kumbh Sans', sans-serif;
 	font-size: 1.7em;

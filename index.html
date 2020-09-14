@@ -6,6 +6,9 @@
 </head>
 <body>
 	<div class="calc_container">
+		<div id="prev_val_container" class="hidden">
+			<span id="prev_val"></span>
+		</div>
 		<div id="calculation_container">
 			<span id='calculation_area'>
 			</span>
@@ -28,11 +31,16 @@
 			<div class="keyEl" onclick="calcKey('3')">3</div>
 			<div class="keyEl" onclick="calcKey('MN')">-</div>
 			<div class="keyEl" onclick="calcKey('0')">0</div>
-			<div class="keyEl" onclick="calcKey('DT')">,</div>
-			<div class="keyEl keyEq" onclick="calcKey(EQ)">=</div>
+			<div class="keyEl" onclick="calcKey('DT')">.</div>
+			<div class="keyEl keyEq" onclick="calcKey('EQ')">=</div>
 		</div>
 	</div>
+	<script src="script.js"></script>
 	<script>
+		const calc_keys = document.getElementsByClassName('keyEl');
+		var prev_sign='';
+		var prev_val = '';
+		var prev_val_container = document.getElementById('prev_val');
 		var calcKey = function(type){
 			let calc_value = document.getElementById('calculation_area');
 			switch(type){
@@ -67,33 +75,80 @@
 					calc_value.innerHTML += '9';
 					break;
 				case 'AC':
+					prev_sign = '';
+					clear_class();
+					prev_val = '';
+					prev_val_container.innerHTML = ''
 					calc_value.innerHTML = '';
 					break;
 				case 'PM':
 					calc_value.innerHTML = '';
 					break;
 				case 'PC':
+					clear_class();
+					calc_keys[2].classList.toggle('prev_sign');
 					calc_value.innerHTML = '';
 					break;
 				case 'SP':
-					calc_value.innerHTML = '/';
+					clear_class();
+					calc_keys[3].classList.toggle('prev_sign');
+					prev_val_container.innerHTML = calc_value.innerText; 
+					calc_value.innerHTML = calculate_ex(calc_value.innerText, prev_val, prev_sign);
+					prev_val=prev_val_container.innerText;
+					prev_sign = '/';
+
 					break;
 				case 'ML':
-					calc_value.innerHTML = 'x';
+					clear_class();
+					calc_keys[7].classList.toggle('prev_sign');
+					prev_val_container.innerHTML = calc_value.innerText; 
+					calc_value.innerHTML = calculate_ex(calc_value.innerText, prev_val, prev_sign);
+					prev_val=prev_val_container.innerText;
+					prev_sign = 'x';
 					break;
 				case 'PL':
-					calc_value.innerHTML += '+';
+					clear_class();
+					calc_keys[11].classList.toggle('prev_sign');
+					prev_val_container.innerHTML = calc_value.innerText; 
+					calc_value.innerHTML = calculate_ex(calc_value.innerText, prev_val, prev_sign);
+					prev_val=prev_val_container.innerText;
+					prev_sign = '+';
 					break;
 				case 'MN':
-					calc_value.innerHTML += '-';
+					clear_class();
+					calc_keys[15].classList.toggle('prev_sign');
+					prev_val_container.innerHTML = calc_value.innerText; 
+					calc_value.innerHTML = calculate_ex(calc_value.innerText, prev_val, prev_sign);
+					prev_val=prev_val_container.innerText;
+					prev_sign = '-';
 					break;
 				case 'EQ':
-					calc_value.innerHTML = calculate_ex(calc_value);
+					calc_value.innerHTML = calculate_ex(calc_value.innerText, prev_val, prev_sign);
+					prev_sign = '';
+					prev_val = '';
+					clear_class();
 					break;
 				case 'DT':
-					calc_value.innerHTML = '';
+					calc_value.innerHTML += '.';
 					break;
 			}
+			if(prev_val != ''){
+				document.getElementById('prev_val_container').classList.remove('hidden');
+			}
+			else{
+				document.getElementById('prev_val_container').classList.add('hidden');
+			}
+		}
+		var clear_class = function(){
+			for(var idx in calc_keys){
+						if(typeof calc_keys[idx] == 'number'){
+							break;
+						}
+						else{
+							let it = calc_keys[idx];
+							it.classList.remove('prev_sign');
+						}
+					}
 		}
 	</script>
 </body>

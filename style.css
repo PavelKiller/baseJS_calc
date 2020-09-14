@@ -4,6 +4,9 @@ body{
 	display: flex;
 	height: 94vh;
 }
+div{
+	transition: all 0.3s ease;
+}
 .keyboard_container{
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -35,6 +38,8 @@ body{
 	height:60px;
 	margin:0.5px 0.5px;
 	background: #2C3C40;
+	box-shadow:0;
+	transition: all 0.1s ease;
 }
 #calculation_container{
 	height: 80px;
@@ -42,6 +47,7 @@ body{
 	background: #C8CBCE;
 }
 .keyEq{
+	z-index: 200;
 	width:200%;
 	background: #D41C63;
 }
@@ -53,4 +59,51 @@ body{
 	width: 500px;
 	line-height: 90px;
 	padding:0 30px; 
+}
+.keyEl:hover{
+	box-shadow:0 0 0px 1px #C8CBCE;
+}
+.keyEq:hover{
+	box-shadow:0 0 5px 1px #D41C63;
+}
+.keyEl:active{
+	z-index: 999;
+	/*margin-top:1px;*/
+	box-shadow:0 0 0px 2px #C8CBCE;
+	/*margin-left:1px: */
+	/*width:73px;*/
+	/*height:58px;*/
+}
+.keyEq:active{
+	box-shadow:0 0 5px 3px #D41C63;
+}
+
+.keyEl.prev_sign{
+	margin-left:1px: 
+	width:73px;
+	height:58px;
+	box-shadow:0 0 0px 2px #C8CBCE;
+}
+
+#prev_val_container{
+	height:50px;
+	box-shadow: 0 0 7px 1px #C8CBCE;
+	font-family: 'Kumbh Sans', sans-serif;
+	font-size: 1.7em;
+	color: #C8CBCE;
+	transition: all 0.3s ease;
+	text-align: right;
+}
+#prev_val{
+	transition: all 0.3s ease;
+	line-height: 60px;
+	padding-right: 20px;
+}
+#prev_val_container.hidden{
+	transition: all 0.3s ease;
+	margin-top: 0px;
+	box-shadow: 0 0 0 0 black;
+}
+#prev_val_container.hidden ~ #calculation_container{
+	margin-top: -50px;
 }
